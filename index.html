@@ -10,6 +10,16 @@
     <!-- <a href="upi://pay?pa=7978356346@ybl&pn=Harsh&tr=abc&am=1000">Pay</a> -->
   </body>
   <script>
-    window.location = "upi://pay?pa=7978356346@ybl&pn=Harsh&tr=abc&am=1000";
+    const obj = {};
+    window.location.search
+      .split("?")[1]
+      .split("&")
+      .forEach((item) => {
+        const key = item.split("=")[0];
+        const value = item.split("=")[1];
+        obj[key] = value;
+      });
+
+    window.location.href = `upi://pay?pa=${obj.pa}&pn=${obj.pn}&am=${obj.am}`;
   </script>
 </html>
